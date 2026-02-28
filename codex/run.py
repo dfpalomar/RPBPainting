@@ -37,7 +37,7 @@ BUSINESS_INFO_FILE = PROJECT_ROOT / "codex" / "BUSINESS_INFO.md"
 DESIGN_SYSTEM_FILE = PROJECT_ROOT / "DesignSystemV2.html"
 
 # Codex CLI command — adjust if your installation differs
-CODEX_CMD = "claude"  # or "codex" depending on your CLI
+CODEX_CMD = "codex"
 
 
 # ─── Task Parsing ─────────────────────────────────────────────────────────────
@@ -181,8 +181,8 @@ def run_codex_session(task: dict, dry_run: bool = False):
         result = subprocess.run(
             [
                 CODEX_CMD,
-                "--print",
-                "--dangerously-skip-permissions",
+                "exec",
+                "--full-auto",
                 prompt
             ],
             cwd=str(PROJECT_ROOT),

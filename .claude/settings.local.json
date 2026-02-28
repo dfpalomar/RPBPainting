@@ -18,7 +18,9 @@
       "Bash(npx tsc --noEmit)",
       "Bash(npm run build)",
       "Bash(python3 codex/run.py --status)",
-      "Bash(python3 codex/run.py --dry-run)"
+      "Bash(python3 codex/run.py --dry-run)",
+      "Bash(codex --help)",
+      "Bash(codex exec --help)"
     ]
   }
 }
