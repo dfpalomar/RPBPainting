@@ -43,6 +43,6 @@ Use these Tailwind classes (e.g., `bg-canvas`, `text-wine-600`, `border-ink-200`
 
 - Always read `../codex/BUSINESS_INFO.md` for any business details
 - Always reference `../DesignSystemV2.html` for visual patterns
-- Run `npm run build` to verify no TypeScript or build errors after changes
+- Run `npm run build` (from inside `website/`) to verify no TypeScript or build errors after changes — NEVER run `npm run dev` (it never exits and will hang the session)
 - Generous whitespace between sections (py-20 to py-24)
 - Mobile-first responsive design

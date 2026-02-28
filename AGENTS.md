@@ -44,7 +44,7 @@ These are your source of truth. Follow them strictly.
 - Use TypeScript with strict typing throughout
 - Follow existing component patterns and folder structure
 - Keep code clean, maintainable, and well-organized
-- Test that `npm run dev` and `npm run build` work without errors after your changes
+- Verify changes with `npm run build` inside `website/` — NEVER run `npm run dev` (it is a long-running server that never exits and will block the session)
 
 ### Project Structure
 ```

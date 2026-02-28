@@ -140,7 +140,7 @@ Task {task['number']}: {task['title']}
 - Use TypeScript with strict typing
 - Follow the existing code patterns and component structure
 - Keep code clean and maintainable
-- Test that the dev server runs without errors after your changes
+- Verify changes with `npm run build` inside `website/` — never run `npm run dev` (it never exits)
 
 ─── AFTER COMPLETING THE TASK ───
 
@@ -183,8 +183,9 @@ def run_codex_session(task: dict, dry_run: bool = False):
                 CODEX_CMD,
                 "exec",
                 "--full-auto",
-                prompt
+                "-"         # Read prompt from stdin (avoids large CLI arg issues)
             ],
+            input=prompt,
             cwd=str(PROJECT_ROOT),
             capture_output=False,  # Let output stream to terminal
             text=True,

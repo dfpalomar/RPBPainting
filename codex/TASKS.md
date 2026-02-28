@@ -13,7 +13,7 @@
 
 ## Task 1: Project Scaffolding & Tailwind Configuration
 
-**Status**: pending
+**Status**: in_progress
 **Estimated scope**: Small
 
 ### Instructions
@@ -49,11 +49,11 @@
      index.css
    ```
 6. Create a minimal `App.tsx` that renders a "Hello RPB Painting" placeholder with the correct background color and font
-7. Verify the dev server runs without errors
+7. Verify the build succeeds without errors: run `npm run build` inside `website/`
 
 ### Acceptance Criteria
 
-- `npm run dev` starts without errors
+- `npm run build` completes without errors
 - Page renders with canvas (#FAF9F6) background and DM Sans font
 - Tailwind classes for all design system tokens work correctly
 - All folder structure is in place
