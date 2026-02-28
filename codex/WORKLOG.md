@@ -44,7 +44,7 @@
 ### Technical Constraints
 
 - All colours, typography, spacing, shadows, radii must come from `DesignSystemV2.html` tokens
-- Tailwind config must mirror these tokens exactly
+- Tailwind v4 `@theme` tokens in `website/src/index.css` must mirror these tokens exactly
 - Maximum 5 navigation links
 - Maximum 2 signature colours per section
 - Section spacing: 80-96px between sections

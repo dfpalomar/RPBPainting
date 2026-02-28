@@ -22,6 +22,7 @@ import subprocess
 import sys
 import re
 import os
+import json
 import argparse
 from pathlib import Path
 from datetime import datetime
@@ -35,6 +36,7 @@ WORKLOG_FILE = PROJECT_ROOT / "codex" / "WORKLOG.md"
 VISION_FILE = PROJECT_ROOT / "codex" / "VISION.md"
 BUSINESS_INFO_FILE = PROJECT_ROOT / "codex" / "BUSINESS_INFO.md"
 DESIGN_SYSTEM_FILE = PROJECT_ROOT / "DesignSystemV2.html"
+RUN_STATE_FILE = PROJECT_ROOT / "codex" / ".run_state.json"
 
 # Codex CLI command — adjust if your installation differs
 CODEX_CMD = "codex"
@@ -100,6 +102,71 @@ def update_task_status(task_num: int, new_status: str):
     TASKS_FILE.write_text(updated)
 
 
+def is_pid_running(pid: int) -> bool:
+    """Check whether a process ID is currently running."""
+    if pid <= 0:
+        return False
+    try:
+        os.kill(pid, 0)
+        return True
+    except OSError:
+        return False
+
+
+def load_run_state() -> dict | None:
+    """Load orchestrator state from disk if present."""
+    if not RUN_STATE_FILE.exists():
+        return None
+    try:
+        return json.loads(RUN_STATE_FILE.read_text())
+    except (json.JSONDecodeError, OSError):
+        return None
+
+
+def save_run_state(task_num: int):
+    """Persist active run metadata for stale session recovery."""
+    state = {
+        "task": task_num,
+        "pid": os.getpid(),
+        "started_at": datetime.now().isoformat(),
+    }
+    RUN_STATE_FILE.write_text(json.dumps(state, indent=2))
+
+
+def clear_run_state():
+    """Remove active run metadata file."""
+    if RUN_STATE_FILE.exists():
+        RUN_STATE_FILE.unlink()
+
+
+def recover_stale_in_progress(tasks: list[dict]) -> list[dict]:
+    """
+    Recover from stale in_progress tasks.
+
+    If tasks are marked in_progress but no active orchestrator process exists,
+    reset them to pending so sequential runs can continue.
+    """
+    in_progress = [t for t in tasks if t["status"] == "in_progress"]
+    if not in_progress:
+        return tasks
+
+    state = load_run_state()
+    if state and is_pid_running(int(state.get("pid", -1))):
+        task_num = state.get("task")
+        print(f"  Active orchestrator appears to be running (task {task_num}, pid {state.get('pid')}).")
+        print("  Exiting to avoid concurrent runs.")
+        sys.exit(1)
+
+    task_nums = ", ".join(str(t["number"]) for t in in_progress)
+    print(f"  Found stale in_progress task(s): {task_nums}")
+    print("  Resetting stale task(s) to pending and continuing.")
+    for task in in_progress:
+        update_task_status(task["number"], "pending")
+
+    clear_run_state()
+    return parse_tasks()
+
+
 def get_next_pending_task(tasks: list[dict]) -> dict | None:
     """Find the next task with 'pending' status."""
     for task in tasks:
@@ -138,6 +205,8 @@ Task {task['number']}: {task['title']}
 - ALL visual styling must follow DesignSystemV2.html tokens exactly
 - ALL business information must come from codex/BUSINESS_INFO.md — do NOT invent details
 - Use TypeScript with strict typing
+- If `website/AGENTS.md` defines implementation details (example: Tailwind v4 token setup),
+  follow that file over generic assumptions in task wording.
 - Follow the existing code patterns and component structure
 - Keep code clean and maintainable
 - Verify changes with `npm run build` inside `website/` — never run `npm run dev` (it never exits)
@@ -174,6 +243,7 @@ def run_codex_session(task: dict, dry_run: bool = False):
 
     # Update status to in_progress
     update_task_status(task["number"], "in_progress")
+    save_run_state(task["number"])
     print(f"  Status: in_progress")
     print(f"  Starting Codex session...\n")
 
@@ -194,15 +264,18 @@ def run_codex_session(task: dict, dry_run: bool = False):
 
         if result.returncode == 0:
             update_task_status(task["number"], "completed")
+            clear_run_state()
             print(f"\n  ✓ Task {task['number']} completed successfully")
             return True
         else:
             update_task_status(task["number"], "failed")
+            clear_run_state()
             print(f"\n  ✗ Task {task['number']} failed (exit code {result.returncode})")
             return False
 
     except subprocess.TimeoutExpired:
         update_task_status(task["number"], "timeout")
+        clear_run_state()
         print(f"\n  ⏱ Task {task['number']} timed out after 30 minutes")
         return False
     except FileNotFoundError:
@@ -210,9 +283,11 @@ def run_codex_session(task: dict, dry_run: bool = False):
         print(f"  Make sure the Codex CLI is installed and in your PATH.")
         print(f"  You may need to adjust CODEX_CMD in this script.")
         update_task_status(task["number"], "pending")  # Reset
+        clear_run_state()
         return False
     except KeyboardInterrupt:
         update_task_status(task["number"], "interrupted")
+        clear_run_state()
         print(f"\n  ⚠ Task {task['number']} interrupted by user")
         return False
 
@@ -302,6 +377,8 @@ def main():
         print(f"  Task {args.reset} reset to pending")
         return
 
+    tasks = recover_stale_in_progress(tasks)
+
     # ── Run specific task ──
     if args.task:
         task = next((t for t in tasks if t["number"] == args.task), None)
@@ -321,7 +398,7 @@ def main():
 
         print(f"  Running {len(pending)} pending tasks sequentially...\n")
         for task in pending:
-            success = run_codex_session(task)
+            success = run_codex_session(task, dry_run=args.dry_run)
             if not success:
                 print(f"\n  Stopping: Task {task['number']} did not complete successfully.")
                 print(f"  Fix the issue and run again to continue.")

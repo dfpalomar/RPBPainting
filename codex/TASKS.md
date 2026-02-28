@@ -13,14 +13,14 @@
 
 ## Task 1: Project Scaffolding & Tailwind Configuration
 
-**Status**: in_progress
+**Status**: pending
 **Estimated scope**: Small
 
 ### Instructions
 
 1. Initialize a Vite + React + TypeScript project in a `website/` subdirectory
 2. Install dependencies: `tailwindcss`, `postcss`, `autoprefixer`, `@tailwindcss/vite` (or equivalent Vite plugin), `lucide-react`
-3. Configure `tailwind.config.ts` with ALL design system tokens from `DesignSystemV2.html`:
+3. Configure Tailwind v4 tokens in `website/src/index.css` `@theme` with ALL design system tokens from `DesignSystemV2.html`:
    - Colors: canvas, ink (50-900), wine (50-900), navy (50-900), slate (50-900), brass (50-900), forest (50-900), stone (50-900)
    - Semantic colors: primary (wine-600), secondary (navy-600), accent (brass-500), success (forest-500), warning (brass-500), info (navy-500)
    - Typography: font-display (Playfair Display), font-body (DM Sans)
