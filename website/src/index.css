@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+@import "tailwindcss";
+
+/* ── Design System Theme Tokens ──────────────────────────── */
+@theme {
+  /* Colors — Canvas */
+  --color-canvas: #FAF9F6;
+  --color-canvas-warm: #F5F2EC;
+  --color-canvas-cool: #F2F1EE;
+
+  /* Colors — Ink */
+  --color-ink-900: #141414;
+  --color-ink-800: #262626;
+  --color-ink-700: #383838;
+  --color-ink-600: #4D4D4D;
+  --color-ink-500: #6B6B6B;
+  --color-ink-400: #949494;
+  --color-ink-300: #BFBFBF;
+  --color-ink-200: #DCDCDC;
+  --color-ink-100: #ECECEC;
+  --color-ink-50: #F5F5F5;
+
+  /* Colors — Wine */
+  --color-wine-50: #FDF5F6;
+  --color-wine-100: #F8E4E7;
+  --color-wine-200: #F0C5CB;
+  --color-wine-300: #E19BA5;
+  --color-wine-400: #C9697A;
+  --color-wine-500: #A83D52;
+  --color-wine-600: #8B2A3E;
+  --color-wine-700: #732236;
+  --color-wine-800: #5E1D2E;
+  --color-wine-900: #4A1825;
+
+  /* Colors — Navy */
+  --color-navy-50: #F4F6F9;
+  --color-navy-100: #E2E7EF;
+  --color-navy-200: #C5CFE0;
+  --color-navy-300: #9AABC6;
+  --color-navy-400: #6D84A8;
+  --color-navy-500: #4A6389;
+  --color-navy-600: #384D6E;
+  --color-navy-700: #2D3E5A;
+  --color-navy-800: #1F2D44;
+  --color-navy-900: #162038;
+
+  /* Colors — Slate */
+  --color-slate-50: #F6F7F8;
+  --color-slate-100: #E8EAED;
+  --color-slate-200: #D1D5DB;
+  --color-slate-300: #AEB5BF;
+  --color-slate-400: #848D9B;
+  --color-slate-500: #64707F;
+  --color-slate-600: #4E5766;
+  --color-slate-700: #404754;
+  --color-slate-800: #353A46;
+  --color-slate-900: #2B2F3A;
+
+  /* Colors — Brass */
+  --color-brass-50: #FBF9F3;
+  --color-brass-100: #F5EFE0;
+  --color-brass-200: #EBDFBF;
+  --color-brass-300: #DCCB96;
+  --color-brass-400: #C9B26C;
+  --color-brass-500: #B59A4A;
+  --color-brass-600: #9A7F38;
+  --color-brass-700: #7D6630;
+  --color-brass-800: #65512A;
+  --color-brass-900: #524326;
+
+  /* Colors — Forest */
+  --color-forest-50: #F4F7F5;
+  --color-forest-100: #E2EBE5;
+  --color-forest-200: #C5D7CC;
+  --color-forest-300: #9BBAA7;
+  --color-forest-400: #6E977E;
+  --color-forest-500: #4E7A60;
+  --color-forest-600: #3C614B;
+  --color-forest-700: #324F3E;
+  --color-forest-800: #2A4034;
+  --color-forest-900: #22352B;
+
+  /* Colors — Stone */
+  --color-stone-50: #F8F7F5;
+  --color-stone-100: #EFECEA;
+  --color-stone-200: #DDD8D2;
+  --color-stone-300: #C5BDB4;
+  --color-stone-400: #A89E93;
+  --color-stone-500: #8E8377;
+  --color-stone-600: #746A5F;
+  --color-stone-700: #5E554C;
+  --color-stone-800: #4D4540;
+  --color-stone-900: #403A35;
+
+  /* Colors — Semantic */
+  --color-primary: #8B2A3E;
+  --color-secondary: #384D6E;
+  --color-accent: #B59A4A;
+  --color-success: #4E7A60;
+  --color-warning: #B59A4A;
+  --color-info: #4A6389;
+  --color-surface: #FFFFFF;
+
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+  --shadow-xl: 0 16px 48px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.05);
+  --shadow-glow-coral: 0 4px 24px rgba(139,42,62,0.20);
+  --shadow-glow-teal: 0 4px 24px rgba(56,77,110,0.20);
+  --shadow-glow-lavender: 0 4px 24px rgba(181,154,74,0.20);
+}
+
+/* ── Base Styles ──────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-ink-900);
+  background-color: var(--color-canvas);
+}
+
+/* ── Animations ──────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.animate-delay-1 { animation-delay: 100ms; }
+.animate-delay-2 { animation-delay: 200ms; }
+.animate-delay-3 { animation-delay: 300ms; }
+.animate-delay-4 { animation-delay: 400ms; }

@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.rpbpainting.com)",
+      "WebFetch(domain:www.houzz.com)",
+      "WebFetch(domain:www.bbb.org)",
+      "WebFetch(domain:ezlocal.com)",
+      "WebFetch(domain:www.yelp.com)",
+      "WebFetch(domain:www.buzzfile.com)",
+      "WebFetch(domain:www.expertise.com)",
+      "WebFetch(domain:web.archive.org)",
+      "WebFetch(domain:webcache.googleusercontent.com)",
+      "Bash(chmod +x /Users/vectransolutions/Documents/Development/Businesses/RPBPainting/codex/run.py)",
+      "Bash(npm create vite@latest website -- --template react-ts)",
+      "Bash(npm install)",
+      "Bash(npm install -D tailwindcss @tailwindcss/vite)",
+      "Bash(npm install lucide-react)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npm run build)",
+      "Bash(python3 codex/run.py --status)",
+      "Bash(python3 codex/run.py --dry-run)"
+    ]
+  }
+}

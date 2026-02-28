@@ -1,0 +1,2979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paint Co. — Design System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     DESIGN SYSTEM TOKENS
+     ============================================================ */
+  :root {
+    /* ── PRIMARY PALETTE ─────────────────────────────────────── */
+    /* Canvas — warm ivory, understated luxury */
+    --canvas:           #FAF9F6;
+    --canvas-warm:      #F5F2EC;
+    --canvas-cool:      #F2F1EE;
+
+    /* Ink – deep, authoritative */
+    --ink-900:          #141414;
+    --ink-800:          #262626;
+    --ink-700:          #383838;
+    --ink-600:          #4D4D4D;
+    --ink-500:          #6B6B6B;
+    --ink-400:          #949494;
+    --ink-300:          #BFBFBF;
+    --ink-200:          #DCDCDC;
+    --ink-100:          #ECECEC;
+    --ink-50:           #F5F5F5;
+
+    /* ── SIGNATURE COLORS ────────────────────────────────────── */
+    /* Solid, rich, masculine — each a statement on its own      */
+
+    /* Wine — deep burgundy, power, luxury */
+    --wine-50:          #FDF5F6;
+    --wine-100:         #F8E4E7;
+    --wine-200:         #F0C5CB;
+    --wine-300:         #E19BA5;
+    --wine-400:         #C9697A;
+    --wine-500:         #A83D52;
+    --wine-600:         #8B2A3E;
+    --wine-700:         #732236;
+    --wine-800:         #5E1D2E;
+    --wine-900:         #4A1825;
+
+    /* Navy — deep midnight blue, authority, trust */
+    --navy-50:          #F4F6F9;
+    --navy-100:         #E2E7EF;
+    --navy-200:         #C5CFE0;
+    --navy-300:         #9AABC6;
+    --navy-400:         #6D84A8;
+    --navy-500:         #4A6389;
+    --navy-600:         #384D6E;
+    --navy-700:         #2D3E5A;
+    --navy-800:         #1F2D44;
+    --navy-900:         #162038;
+
+    /* Slate — cool charcoal blue, sophistication, depth */
+    --slate-50:         #F6F7F8;
+    --slate-100:        #E8EAED;
+    --slate-200:        #D1D5DB;
+    --slate-300:        #AEB5BF;
+    --slate-400:        #848D9B;
+    --slate-500:        #64707F;
+    --slate-600:        #4E5766;
+    --slate-700:        #404754;
+    --slate-800:        #353A46;
+    --slate-900:        #2B2F3A;
+
+    /* Brass — warm antique gold, premium, craftsmanship */
+    --brass-50:         #FBF9F3;
+    --brass-100:        #F5EFE0;
+    --brass-200:        #EBDFBF;
+    --brass-300:        #DCCB96;
+    --brass-400:        #C9B26C;
+    --brass-500:        #B59A4A;
+    --brass-600:        #9A7F38;
+    --brass-700:        #7D6630;
+    --brass-800:        #65512A;
+    --brass-900:        #524326;
+
+    /* Forest — deep hunter green, grounded, natural */
+    --forest-50:        #F4F7F5;
+    --forest-100:       #E2EBE5;
+    --forest-200:       #C5D7CC;
+    --forest-300:       #9BBAA7;
+    --forest-400:       #6E977E;
+    --forest-500:       #4E7A60;
+    --forest-600:       #3C614B;
+    --forest-700:       #324F3E;
+    --forest-800:       #2A4034;
+    --forest-900:       #22352B;
+
+    /* Stone — warm taupe, earthy, substantial */
+    --stone-50:         #F8F7F5;
+    --stone-100:        #EFECEA;
+    --stone-200:        #DDD8D2;
+    --stone-300:        #C5BDB4;
+    --stone-400:        #A89E93;
+    --stone-500:        #8E8377;
+    --stone-600:        #746A5F;
+    --stone-700:        #5E554C;
+    --stone-800:        #4D4540;
+    --stone-900:        #403A35;
+
+    /* ── SEMANTIC TOKENS ─────────────────────────────────────── */
+    --color-primary:    var(--wine-600);
+    --color-secondary:  var(--navy-600);
+    --color-accent:     var(--brass-500);
+    --color-success:    var(--forest-500);
+    --color-warning:    var(--brass-500);
+    --color-info:       var(--navy-500);
+    --color-bg:         var(--canvas);
+    --color-surface:    #FFFFFF;
+    --color-text:       var(--ink-900);
+    --color-text-secondary: var(--ink-500);
+    --color-border:     var(--ink-100);
+
+    /* ── TYPOGRAPHY ──────────────────────────────────────────── */
+    --font-display:     'Playfair Display', Georgia, serif;
+    --font-body:        'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --text-xs:          0.75rem;    /* 12px */
+    --text-sm:          0.875rem;   /* 14px */
+    --text-base:        1rem;       /* 16px */
+    --text-lg:          1.125rem;   /* 18px */
+    --text-xl:          1.25rem;    /* 20px */
+    --text-2xl:         1.5rem;     /* 24px */
+    --text-3xl:         1.875rem;   /* 30px */
+    --text-4xl:         2.25rem;    /* 36px */
+    --text-5xl:         3rem;       /* 48px */
+    --text-6xl:         3.75rem;    /* 60px */
+    --text-7xl:         4.5rem;     /* 72px */
+
+    --leading-tight:    1.15;
+    --leading-snug:     1.3;
+    --leading-normal:   1.6;
+    --leading-relaxed:  1.75;
+
+    --tracking-tight:   -0.025em;
+    --tracking-normal:  0;
+    --tracking-wide:    0.025em;
+    --tracking-wider:   0.05em;
+    --tracking-widest:  0.1em;
+
+    /* ── SPACING ─────────────────────────────────────────────── */
+    --space-1:          0.25rem;    /* 4px */
+    --space-2:          0.5rem;     /* 8px */
+    --space-3:          0.75rem;    /* 12px */
+    --space-4:          1rem;       /* 16px */
+    --space-5:          1.25rem;    /* 20px */
+    --space-6:          1.5rem;     /* 24px */
+    --space-8:          2rem;       /* 32px */
+    --space-10:         2.5rem;     /* 40px */
+    --space-12:         3rem;       /* 48px */
+    --space-16:         4rem;       /* 64px */
+    --space-20:         5rem;       /* 80px */
+    --space-24:         6rem;       /* 96px */
+    --space-32:         8rem;       /* 128px */
+
+    /* ── RADIUS ──────────────────────────────────────────────── */
+    --radius-sm:        6px;
+    --radius-md:        10px;
+    --radius-lg:        16px;
+    --radius-xl:        24px;
+    --radius-2xl:       32px;
+    --radius-full:      9999px;
+
+    /* ── SHADOWS ─────────────────────────────────────────────── */
+    --shadow-xs:        0 1px 2px rgba(0,0,0,0.04);
+    --shadow-sm:        0 2px 8px rgba(0,0,0,0.04), 0 1px 2px rgba(0,0,0,0.06);
+    --shadow-md:        0 4px 16px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg:        0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    --shadow-xl:        0 16px 48px rgba(0,0,0,0.10), 0 4px 16px rgba(0,0,0,0.05);
+    --shadow-glow-coral: 0 4px 24px rgba(139,42,62,0.20);
+    --shadow-glow-teal:  0 4px 24px rgba(56,77,110,0.20);
+    --shadow-glow-lavender: 0 4px 24px rgba(181,154,74,0.20);
+
+    /* ── TRANSITIONS ─────────────────────────────────────────── */
+    --ease-out:         cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-spring:      cubic-bezier(0.34, 1.56, 0.64, 1);
+    --duration-fast:    150ms;
+    --duration-normal:  250ms;
+    --duration-slow:    400ms;
+    --duration-slower:  600ms;
+
+    /* ── LAYOUT ──────────────────────────────────────────────── */
+    --max-width:        1200px;
+    --max-width-narrow: 800px;
+    --max-width-wide:   1440px;
+  }
+
+  /* ============================================================
+     RESET & BASE
+     ============================================================ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: var(--leading-normal);
+    color: var(--color-text);
+    background: var(--color-bg);
+  }
+
+  /* ============================================================
+     DESIGN SYSTEM DOCUMENT STYLES
+     ============================================================ */
+  .ds-page {
+    max-width: var(--max-width-wide);
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  /* ── HEADER ──────────────────────────────────────────────── */
+  .ds-header {
+    text-align: center;
+    padding: var(--space-24) var(--space-8) var(--space-16);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ds-header::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(139,42,62,0.06) 0%, rgba(181,154,74,0.05) 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: pulse-glow 8s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { transform: translateX(-50%) scale(1); opacity: 1; }
+    50% { transform: translateX(-50%) scale(1.1); opacity: 0.7; }
+  }
+
+  .ds-header__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--ink-600);
+    margin-bottom: var(--space-8);
+    position: relative;
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-header__badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--color-primary);
+    border-radius: 50%;
+  }
+
+  .ds-header__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-5xl), 6vw, var(--text-7xl));
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .ds-header__title em {
+    font-style: italic;
+    background: linear-gradient(135deg, var(--wine-600), var(--brass-500));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .ds-header__subtitle {
+    font-size: var(--text-xl);
+    color: var(--ink-500);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: var(--leading-relaxed);
+    font-weight: 300;
+  }
+
+  /* ── SECTION ─────────────────────────────────────────────── */
+  .ds-section {
+    margin-bottom: var(--space-24);
+  }
+
+  .ds-section__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin-bottom: var(--space-3);
+  }
+
+  .ds-section__title {
+    font-family: var(--font-display);
+    font-size: var(--text-4xl);
+    font-weight: 500;
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+    margin-bottom: var(--space-3);
+  }
+
+  .ds-section__desc {
+    font-size: var(--text-lg);
+    color: var(--ink-500);
+    max-width: 640px;
+    margin-bottom: var(--space-12);
+    line-height: var(--leading-relaxed);
+    font-weight: 300;
+  }
+
+  .ds-divider {
+    height: 1px;
+    background: var(--ink-100);
+    margin: var(--space-16) 0;
+    border: none;
+  }
+
+  /* ── COLOR SWATCHES ──────────────────────────────────────── */
+  .ds-colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .ds-color-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-color-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .ds-color-card__swatch {
+    height: 160px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+  }
+
+  .ds-color-card__hex {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    backdrop-filter: blur(8px);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ds-color-card__hex--light {
+    background: rgba(255,255,255,0.25);
+    color: white;
+  }
+
+  .ds-color-card__hex--dark {
+    background: rgba(0,0,0,0.08);
+    color: var(--ink-800);
+  }
+
+  .ds-color-card__info {
+    padding: var(--space-5) var(--space-5) var(--space-6);
+  }
+
+  .ds-color-card__name {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-1);
+    color: var(--ink-900);
+  }
+
+  .ds-color-card__role {
+    font-size: var(--text-sm);
+    color: var(--ink-500);
+    line-height: var(--leading-relaxed);
+  }
+
+  .ds-color-scale {
+    display: flex;
+    gap: 2px;
+    margin-top: var(--space-4);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .ds-color-scale__step {
+    flex: 1;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--duration-fast) var(--ease-out);
+  }
+
+  .ds-color-scale__step:hover {
+    transform: scaleY(1.4);
+    z-index: 1;
+  }
+
+  .ds-color-scale__step::after {
+    content: attr(data-label);
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: var(--ink-400);
+    opacity: 0;
+    transition: opacity var(--duration-fast);
+    white-space: nowrap;
+  }
+
+  .ds-color-scale__step:hover::after {
+    opacity: 1;
+  }
+
+  /* ── CANVAS COLORS ──────────────────────────────────────── */
+  .ds-canvas-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-10);
+  }
+
+  .ds-canvas-card {
+    height: 120px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: var(--space-2);
+    border: 1px solid var(--ink-100);
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-canvas-card:hover { transform: scale(1.02); }
+
+  .ds-canvas-card span:first-child {
+    font-weight: 500;
+    font-size: var(--text-sm);
+    color: var(--ink-700);
+  }
+
+  .ds-canvas-card span:last-child {
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+    font-family: monospace;
+  }
+
+  /* ── TYPOGRAPHY ──────────────────────────────────────────── */
+  .ds-type-specimen {
+    margin-bottom: var(--space-12);
+  }
+
+  .ds-type-row {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-8);
+    padding: var(--space-6) 0;
+    border-bottom: 1px solid var(--ink-100);
+  }
+
+  .ds-type-row:last-child { border-bottom: none; }
+
+  .ds-type-meta {
+    width: 140px;
+    flex-shrink: 0;
+  }
+
+  .ds-type-meta__size {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--ink-700);
+    font-family: monospace;
+  }
+
+  .ds-type-meta__name {
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+    margin-top: 2px;
+  }
+
+  .ds-type-sample {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .ds-type-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-12);
+    margin-bottom: var(--space-12);
+    padding: var(--space-10);
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ds-type-pair__block h4 {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin-bottom: var(--space-4);
+  }
+
+  .ds-font-display {
+    font-family: var(--font-display);
+    font-size: var(--text-5xl);
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+  }
+
+  .ds-font-body {
+    font-family: var(--font-body);
+    font-size: var(--text-lg);
+    line-height: var(--leading-relaxed);
+    color: var(--ink-600);
+    font-weight: 300;
+  }
+
+  /* ── COMPONENTS ──────────────────────────────────────────── */
+  .ds-component-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .ds-component-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    align-items: flex-start;
+  }
+
+  .ds-component-card__label {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--ink-400);
+  }
+
+  /* Buttons */
+  .ds-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    font-family: var(--font-body);
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+    text-decoration: none;
+    white-space: nowrap;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ds-btn--primary {
+    background: var(--ink-900);
+    color: white;
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+  }
+  .ds-btn--primary:hover {
+    background: var(--ink-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .ds-btn--secondary {
+    background: transparent;
+    color: var(--ink-900);
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    border: 1.5px solid var(--ink-200);
+  }
+  .ds-btn--secondary:hover {
+    border-color: var(--ink-900);
+    transform: translateY(-1px);
+  }
+
+  .ds-btn--accent {
+    background: var(--wine-600);
+    color: white;
+    padding: var(--space-4) var(--space-8);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+  }
+  .ds-btn--accent:hover {
+    background: var(--wine-700);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-glow-coral);
+  }
+
+  .ds-btn--ghost {
+    background: transparent;
+    color: var(--ink-700);
+    padding: var(--space-3) var(--space-5);
+    border-radius: var(--radius-md);
+    font-size: var(--text-sm);
+  }
+  .ds-btn--ghost:hover {
+    background: var(--ink-50);
+    color: var(--ink-900);
+  }
+
+  .ds-btn--pill {
+    background: var(--wine-50);
+    color: var(--wine-700);
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+  }
+  .ds-btn--pill:hover {
+    background: var(--wine-100);
+  }
+
+  .ds-btn--lg {
+    padding: var(--space-5) var(--space-10);
+    font-size: var(--text-base);
+  }
+
+  /* Input */
+  .ds-input {
+    width: 100%;
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    padding: var(--space-4) var(--space-5);
+    border: 1.5px solid var(--ink-200);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    color: var(--ink-900);
+    outline: none;
+    transition: border-color var(--duration-fast), box-shadow var(--duration-fast);
+  }
+
+  .ds-input::placeholder {
+    color: var(--ink-400);
+    font-weight: 300;
+  }
+
+  .ds-input:focus {
+    border-color: var(--wine-400);
+    box-shadow: 0 0 0 3px var(--wine-100);
+  }
+
+  /* Badge / Tag */
+  .ds-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ds-tag--coral    { background: var(--wine-100);    color: var(--wine-700); }
+  .ds-tag--teal     { background: var(--navy-100);     color: var(--navy-700); }
+  .ds-tag--lavender { background: var(--slate-100);  color: var(--slate-700); }
+  .ds-tag--ochre    { background: var(--brass-100);     color: var(--brass-700); }
+  .ds-tag--sage     { background: var(--forest-100);      color: var(--forest-700); }
+  .ds-tag--sky      { background: var(--stone-100);       color: var(--stone-700); }
+
+  /* ── SERVICE CARD (example component) ───────────────────── */
+  .ds-service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .ds-service-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-out);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ds-service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .ds-service-card:hover::before { opacity: 1; }
+
+  .ds-service-card:nth-child(1)::before { background: var(--wine-600); }
+  .ds-service-card:nth-child(2)::before { background: var(--navy-700); }
+  .ds-service-card:nth-child(3)::before { background: var(--brass-500); }
+
+  .ds-service-card__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    margin-bottom: var(--space-5);
+  }
+
+  .ds-service-card:nth-child(1) .ds-service-card__icon { background: var(--wine-50); }
+  .ds-service-card:nth-child(2) .ds-service-card__icon { background: var(--navy-50); }
+  .ds-service-card:nth-child(3) .ds-service-card__icon { background: var(--brass-50); }
+
+  .ds-service-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--ink-900);
+  }
+
+  .ds-service-card__desc {
+    font-size: var(--text-sm);
+    color: var(--ink-500);
+    line-height: var(--leading-relaxed);
+    font-weight: 300;
+  }
+
+  .ds-service-card__link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-5);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--ink-700);
+    text-decoration: none;
+    transition: gap var(--duration-normal) var(--ease-out), color var(--duration-fast);
+  }
+
+  .ds-service-card:hover .ds-service-card__link {
+    gap: var(--space-3);
+  }
+
+  .ds-service-card:nth-child(1):hover .ds-service-card__link { color: var(--wine-600); }
+  .ds-service-card:nth-child(2):hover .ds-service-card__link { color: var(--navy-600); }
+  .ds-service-card:nth-child(3):hover .ds-service-card__link { color: var(--brass-600); }
+
+  /* ── NAV EXAMPLE ─────────────────────────────────────────── */
+  .ds-nav-example {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-5) var(--space-8);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-8);
+  }
+
+  .ds-nav-logo {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: var(--ink-900);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ds-nav-logo__dot {
+    width: 10px;
+    height: 10px;
+    background: var(--wine-600);
+    border-radius: 50%;
+  }
+
+  .ds-nav-links {
+    display: flex;
+    gap: var(--space-1);
+    list-style: none;
+  }
+
+  .ds-nav-links a {
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--ink-500);
+    text-decoration: none;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-md);
+    transition: all var(--duration-fast);
+  }
+
+  .ds-nav-links a:hover,
+  .ds-nav-links a.active {
+    color: var(--ink-900);
+    background: var(--ink-50);
+  }
+
+  .ds-nav-cta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  /* ── HERO EXAMPLE ────────────────────────────────────────── */
+  .ds-hero-example {
+    background: var(--color-surface);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-16) var(--space-12);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: var(--space-8);
+  }
+
+  .ds-hero-example::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--wine-100) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  .ds-hero-example::after {
+    content: '';
+    position: absolute;
+    bottom: -150px;
+    left: -80px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--brass-100) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .ds-hero-example > * { position: relative; z-index: 1; }
+
+  .ds-hero-example__tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-2) var(--space-4);
+    background: var(--wine-50);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 500;
+    color: var(--wine-700);
+    margin-bottom: var(--space-8);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .ds-hero-example__heading {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-4xl), 5vw, var(--text-6xl));
+    font-weight: 500;
+    line-height: var(--leading-tight);
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+    margin-bottom: var(--space-6);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ds-hero-example__heading em {
+    font-style: italic;
+    color: var(--wine-600);
+  }
+
+  .ds-hero-example__body {
+    font-size: var(--text-lg);
+    color: var(--ink-500);
+    max-width: 520px;
+    margin: 0 auto var(--space-10);
+    font-weight: 300;
+    line-height: var(--leading-relaxed);
+  }
+
+  .ds-hero-example__actions {
+    display: flex;
+    gap: var(--space-4);
+    justify-content: center;
+  }
+
+  /* ── COLOR PALETTE VISUAL ────────────────────────────────── */
+  .ds-palette-visual {
+    display: flex;
+    gap: var(--space-3);
+    margin-bottom: var(--space-12);
+    height: 220px;
+  }
+
+  .ds-palette-bar {
+    flex: 1;
+    border-radius: var(--radius-xl);
+    position: relative;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+    overflow: hidden;
+  }
+
+  .ds-palette-bar:hover {
+    flex: 1.8;
+  }
+
+  .ds-palette-bar__label {
+    position: absolute;
+    bottom: var(--space-4);
+    left: var(--space-4);
+    right: var(--space-4);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-palette-bar:hover .ds-palette-bar__label {
+    opacity: 1;
+  }
+
+  .ds-palette-bar__name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+
+  .ds-palette-bar__hex {
+    font-size: var(--text-xs);
+    opacity: 0.8;
+    font-family: monospace;
+  }
+
+  /* ── SPACING VISUALIZATION ───────────────────────────────── */
+  .ds-spacing-grid {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .ds-spacing-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .ds-spacing-label {
+    width: 100px;
+    font-size: var(--text-sm);
+    color: var(--ink-500);
+    font-family: monospace;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  .ds-spacing-bar {
+    height: 32px;
+    background: var(--wine-100);
+    border-radius: var(--radius-md);
+    transition: all var(--duration-normal) var(--ease-out);
+    position: relative;
+  }
+
+  .ds-spacing-bar::after {
+    content: attr(data-px);
+    position: absolute;
+    right: -40px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+  }
+
+  .ds-spacing-bar:hover {
+    background: var(--wine-200);
+  }
+
+  /* ── RADIUS VISUALIZATION ────────────────────────────────── */
+  .ds-radius-grid {
+    display: flex;
+    gap: var(--space-6);
+    flex-wrap: wrap;
+  }
+
+  .ds-radius-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ds-radius-box {
+    width: 80px;
+    height: 80px;
+    background: var(--navy-200);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-radius-box:hover {
+    background: var(--navy-300);
+    transform: scale(1.1);
+  }
+
+  .ds-radius-item span {
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+    font-family: monospace;
+  }
+
+  /* ── SHADOW VISUALIZATION ────────────────────────────────── */
+  .ds-shadow-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--space-8);
+  }
+
+  .ds-shadow-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-4);
+  }
+
+  .ds-shadow-box {
+    width: 120px;
+    height: 80px;
+    background: var(--color-surface);
+    border-radius: var(--radius-lg);
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-shadow-box:hover { transform: scale(1.05); }
+
+  .ds-shadow-item span {
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+    font-family: monospace;
+  }
+
+  /* ── TESTIMONIAL CARD ────────────────────────────────────── */
+  .ds-testimonial {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-sm);
+    max-width: 480px;
+    margin-bottom: var(--space-8);
+  }
+
+  .ds-testimonial__stars {
+    display: flex;
+    gap: 2px;
+    margin-bottom: var(--space-4);
+    color: var(--brass-400);
+    font-size: var(--text-lg);
+  }
+
+  .ds-testimonial__text {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-700);
+    line-height: var(--leading-snug);
+    margin-bottom: var(--space-6);
+  }
+
+  .ds-testimonial__author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ds-testimonial__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--navy-200);
+  }
+
+  .ds-testimonial__name {
+    font-weight: 600;
+    font-size: var(--text-sm);
+    color: var(--ink-900);
+  }
+
+  .ds-testimonial__role {
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+  }
+
+  /* ── FOOTER EXAMPLE ──────────────────────────────────────── */
+  .ds-footer-example {
+    background: var(--ink-900);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-12) var(--space-10);
+    color: white;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: var(--space-8);
+  }
+
+  .ds-footer-brand {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 600;
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ds-footer-brand__dot {
+    width: 10px;
+    height: 10px;
+    background: var(--wine-600);
+    border-radius: 50%;
+  }
+
+  .ds-footer-tagline {
+    font-size: var(--text-sm);
+    color: var(--ink-400);
+    line-height: var(--leading-relaxed);
+    max-width: 280px;
+    font-weight: 300;
+  }
+
+  .ds-footer-col h5 {
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    color: var(--ink-400);
+    margin-bottom: var(--space-4);
+  }
+
+  .ds-footer-col a {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--ink-300);
+    text-decoration: none;
+    padding: var(--space-1) 0;
+    transition: color var(--duration-fast);
+    font-weight: 300;
+  }
+
+  .ds-footer-col a:hover { color: white; }
+
+  /* ── GRADIENT EXAMPLES ───────────────────────────────────── */
+  .ds-gradient-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+  }
+
+  .ds-gradient-card {
+    height: 140px;
+    border-radius: var(--radius-xl);
+    display: flex;
+    align-items: flex-end;
+    padding: var(--space-4);
+    transition: transform var(--duration-normal) var(--ease-out);
+    cursor: pointer;
+  }
+
+  .ds-gradient-card:hover { transform: scale(1.03); }
+
+  .ds-gradient-card span {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    color: white;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  /* ── ICON STYLE GUIDE ────────────────────────────────────── */
+  .ds-icon-grid {
+    display: flex;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+  }
+
+  .ds-icon-item {
+    width: 64px;
+    height: 64px;
+    background: var(--color-surface);
+    border: 1px solid var(--ink-100);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--text-2xl);
+    transition: all var(--duration-normal) var(--ease-out);
+    cursor: pointer;
+  }
+
+  .ds-icon-item:hover {
+    border-color: var(--wine-200);
+    background: var(--wine-50);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+  }
+
+  /* ── USAGE GUIDELINES ────────────────────────────────────── */
+  .ds-do-dont {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-6);
+    margin-top: var(--space-8);
+  }
+
+  .ds-do, .ds-dont {
+    padding: var(--space-6);
+    border-radius: var(--radius-lg);
+  }
+
+  .ds-do {
+    background: var(--forest-50);
+    border: 1.5px solid var(--forest-200);
+  }
+
+  .ds-dont {
+    background: var(--wine-50);
+    border: 1.5px solid var(--wine-200);
+  }
+
+  .ds-do h5, .ds-dont h5 {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: var(--space-3);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .ds-do h5 { color: var(--forest-700); }
+  .ds-dont h5 { color: var(--wine-700); }
+
+  .ds-do p, .ds-dont p {
+    font-size: var(--text-sm);
+    line-height: var(--leading-relaxed);
+    color: var(--ink-600);
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────── */
+  @media (max-width: 768px) {
+    .ds-colors { grid-template-columns: 1fr; }
+    .ds-type-pair { grid-template-columns: 1fr; }
+    .ds-service-cards { grid-template-columns: 1fr; }
+    .ds-palette-visual { height: 160px; }
+    .ds-footer-example { grid-template-columns: 1fr 1fr; }
+    .ds-gradient-grid { grid-template-columns: 1fr 1fr; }
+    .ds-do-dont { grid-template-columns: 1fr; }
+    .ds-canvas-row { grid-template-columns: 1fr; }
+    .ds-type-row { flex-direction: column; gap: var(--space-2); }
+    .ds-type-meta { width: auto; text-align: left; }
+    .ds-hero-example { padding: var(--space-10) var(--space-6); }
+  }
+
+  /* ── ANIMATIONS ──────────────────────────────────────────── */
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ds-animate {
+    animation: fadeInUp var(--duration-slower) var(--ease-out) both;
+  }
+
+  .ds-animate-delay-1 { animation-delay: 100ms; }
+  .ds-animate-delay-2 { animation-delay: 200ms; }
+  .ds-animate-delay-3 { animation-delay: 300ms; }
+  .ds-animate-delay-4 { animation-delay: 400ms; }
+
+  /* ============================================================
+     GALLERY / PORTFOLIO PATTERNS
+     ============================================================ */
+
+  /* ── GALLERY SECTION HEADER ──────────────────────────────── */
+  .ds-gallery-header {
+    text-align: center;
+    margin-bottom: var(--space-10);
+  }
+
+  .ds-gallery-header__title {
+    font-family: var(--font-display);
+    font-size: clamp(var(--text-4xl), 4vw, var(--text-5xl));
+    font-weight: 500;
+    letter-spacing: var(--tracking-tight);
+    color: var(--ink-900);
+    margin-bottom: var(--space-3);
+  }
+
+  .ds-gallery-header__title em {
+    font-style: italic;
+    color: var(--wine-500);
+  }
+
+  .ds-gallery-header__subtitle {
+    font-size: var(--text-lg);
+    color: var(--ink-500);
+    font-weight: 300;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* ── FILTER BAR ──────────────────────────────────────────── */
+  .ds-gallery-filters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-10);
+    flex-wrap: wrap;
+  }
+
+  .ds-gallery-filter {
+    font-family: var(--font-body);
+    font-size: var(--text-sm);
+    font-weight: 400;
+    color: var(--ink-500);
+    padding: var(--space-2) var(--space-5);
+    border-radius: var(--radius-full);
+    border: 1.5px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ds-gallery-filter:hover {
+    color: var(--ink-900);
+    background: var(--ink-50);
+  }
+
+  .ds-gallery-filter--active {
+    color: var(--ink-900);
+    font-weight: 500;
+    background: var(--color-surface);
+    border-color: var(--ink-200);
+    box-shadow: var(--shadow-xs);
+  }
+
+  /* ── LAYOUT A: MASONRY GRID (Primary recommendation) ─────── */
+  .ds-gallery-masonry {
+    columns: 3;
+    column-gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  .ds-gallery-masonry .ds-gallery-item {
+    break-inside: avoid;
+    margin-bottom: var(--space-4);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-masonry .ds-gallery-item:hover {
+    transform: scale(1.015);
+    z-index: 2;
+  }
+
+  .ds-gallery-item__img {
+    width: 100%;
+    display: block;
+    border-radius: var(--radius-xl);
+    background-size: cover;
+    background-position: center;
+  }
+
+  /* Overlay on hover */
+  .ds-gallery-item__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(0deg, rgba(26,26,26,0.75) 0%, rgba(26,26,26,0.15) 40%, transparent 100%);
+    border-radius: var(--radius-xl);
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--space-6);
+  }
+
+  .ds-gallery-masonry .ds-gallery-item:hover .ds-gallery-item__overlay {
+    opacity: 1;
+  }
+
+  .ds-gallery-item__overlay-title {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    color: white;
+    margin-bottom: var(--space-1);
+  }
+
+  .ds-gallery-item__overlay-meta {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.7);
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .ds-gallery-item__overlay-tag {
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    color: white;
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ds-gallery-item__overlay-arrow {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    width: 36px;
+    height: 36px;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: var(--text-sm);
+    transition: all var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-masonry .ds-gallery-item:hover .ds-gallery-item__overlay-arrow {
+    background: white;
+    color: var(--ink-900);
+    transform: rotate(-45deg);
+  }
+
+  /* ── LAYOUT B: FEATURED + GRID (Hero project layout) ─────── */
+  .ds-gallery-featured {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  .ds-gallery-featured__hero {
+    grid-row: 1 / 3;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    min-height: 480px;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-featured__hero:hover { transform: scale(1.008); }
+
+  .ds-gallery-featured__hero .ds-gallery-item__img { height: 100%; }
+
+  .ds-gallery-featured__hero .ds-gallery-item__overlay {
+    border-radius: var(--radius-2xl);
+    padding: var(--space-8);
+    opacity: 1;
+    background: linear-gradient(0deg, rgba(26,26,26,0.7) 0%, rgba(26,26,26,0.1) 50%, transparent 100%);
+  }
+
+  .ds-gallery-featured__hero .ds-gallery-item__overlay-title {
+    font-size: var(--text-3xl);
+    margin-bottom: var(--space-2);
+  }
+
+  .ds-gallery-featured__hero .ds-gallery-item__overlay-meta {
+    font-size: var(--text-base);
+  }
+
+  .ds-gallery-featured__side {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    min-height: 232px;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-featured__side:hover {
+    transform: scale(1.015);
+    z-index: 2;
+  }
+
+  .ds-gallery-featured__side .ds-gallery-item__img { height: 100%; }
+
+  .ds-gallery-featured__side .ds-gallery-item__overlay {
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-featured__side:hover .ds-gallery-item__overlay {
+    opacity: 1;
+  }
+
+  /* ── LAYOUT C: UNIFORM GRID (Clean, structured) ──────────── */
+  .ds-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-4);
+    margin-bottom: var(--space-12);
+  }
+
+  .ds-gallery-grid .ds-gallery-item {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: transform var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-grid .ds-gallery-item:hover {
+    transform: scale(1.02);
+    z-index: 2;
+  }
+
+  .ds-gallery-grid .ds-gallery-item .ds-gallery-item__img {
+    aspect-ratio: 4 / 3;
+  }
+
+  .ds-gallery-grid .ds-gallery-item .ds-gallery-item__overlay {
+    opacity: 0;
+    transition: opacity var(--duration-normal) var(--ease-out);
+  }
+
+  .ds-gallery-grid .ds-gallery-item:hover .ds-gallery-item__overlay {
+    opacity: 1;
+  }
+
+  /* ── PROJECT DETAIL CARD (Below-image metadata) ──────────── */
+  .ds-gallery-detail {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-12);
+  }
+
+  .ds-gallery-detail-card {
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--duration-normal) var(--ease-out);
+    cursor: pointer;
+  }
+
+  .ds-gallery-detail-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .ds-gallery-detail-card__img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .ds-gallery-detail-card__badge {
+    position: absolute;
+    top: var(--space-3);
+    left: var(--space-3);
+    font-size: var(--text-xs);
+    padding: var(--space-1) var(--space-3);
+    background: rgba(255,255,255,0.9);
+    backdrop-filter: blur(8px);
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    color: var(--ink-700);
+    letter-spacing: var(--tracking-wide);
+  }
+
+  .ds-gallery-detail-card__body {
+    padding: var(--space-5) var(--space-6) var(--space-6);
+  }
+
+  .ds-gallery-detail-card__title {
+    font-family: var(--font-display);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--ink-900);
+    margin-bottom: var(--space-1);
+  }
+
+  .ds-gallery-detail-card__location {
+    font-size: var(--text-sm);
+    color: var(--ink-400);
+    margin-bottom: var(--space-4);
+    font-weight: 300;
+  }
+
+  .ds-gallery-detail-card__stats {
+    display: flex;
+    gap: var(--space-4);
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--ink-100);
+  }
+
+  .ds-gallery-detail-card__stat {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .ds-gallery-detail-card__stat-value {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--ink-900);
+  }
+
+  .ds-gallery-detail-card__stat-label {
+    font-size: var(--text-xs);
+    color: var(--ink-400);
+    font-weight: 300;
+  }
+
+  /* ── BEFORE / AFTER SLIDER ───────────────────────────────── */
+  .ds-before-after {
+    position: relative;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    max-width: 800px;
+    margin: 0 auto var(--space-12);
+    cursor: col-resize;
+    box-shadow: var(--shadow-md);
+  }
+
+  .ds-before-after__img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: block;
+  }
+
+  .ds-before-after__divider {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 3px;
+    background: white;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    z-index: 3;
+  }
+
+  .ds-before-after__handle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 48px;
+    height: 48px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4;
+    font-size: var(--text-sm);
+    color: var(--ink-600);
+    letter-spacing: 4px;
+  }
+
+  .ds-before-after__label {
+    position: absolute;
+    bottom: var(--space-5);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    letter-spacing: var(--tracking-widest);
+    text-transform: uppercase;
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    z-index: 2;
+  }
+
+  .ds-before-after__label--before {
+    left: var(--space-5);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    backdrop-filter: blur(8px);
+  }
+
+  .ds-before-after__label--after {
+    right: var(--space-5);
+    background: rgba(255,255,255,0.9);
+    color: var(--ink-800);
+    backdrop-filter: blur(8px);
+  }
+
+  /* ── LIGHTBOX PREVIEW ────────────────────────────────────── */
+  .ds-lightbox-preview {
+    position: relative;
+    background: rgba(26,26,26,0.95);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-10);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-8);
+    min-height: 400px;
+    margin-bottom: var(--space-12);
+    overflow: hidden;
+  }
+
+  .ds-lightbox-preview__backdrop {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(45,62,90,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .ds-lightbox-preview__image {
+    width: 580px;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-xl);
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 16px 64px rgba(0,0,0,0.4);
+    position: relative;
+    z-index: 1;
+  }
+
+  .ds-lightbox-preview__info {
+    position: relative;
+    z-index: 1;
+    max-width: 280px;
+  }
+
+  .ds-lightbox-preview__close {
+    position: absolute;
+    top: var(--space-5);
+    right: var(--space-5);
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.1);
+    border: none;
+    border-radius: 50%;
+    color: rgba(255,255,255,0.6);
+    font-size: var(--text-xl);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--duration-fast);
+    z-index: 2;
+  }
+
+  .ds-lightbox-preview__close:hover {
+    background: rgba(255,255,255,0.2);
+    color: white;
+  }
+
+  .ds-lightbox-preview__tag {
+    display: inline-flex;
+    padding: var(--space-1) var(--space-3);
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    color: rgba(255,255,255,0.7);
+    font-weight: 500;
+    letter-spacing: var(--tracking-wide);
+    margin-bottom: var(--space-4);
+  }
+
+  .ds-lightbox-preview__title {
+    font-family: var(--font-display);
+    font-size: var(--text-2xl);
+    font-weight: 500;
+    color: white;
+    margin-bottom: var(--space-2);
+  }
+
+  .ds-lightbox-preview__location {
+    font-size: var(--text-sm);
+    color: rgba(255,255,255,0.5);
+    margin-bottom: var(--space-6);
+    font-weight: 300;
+  }
+
+  .ds-lightbox-preview__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .ds-lightbox-preview__detail {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-sm);
+    padding-bottom: var(--space-3);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .ds-lightbox-preview__detail-label {
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+  }
+
+  .ds-lightbox-preview__detail-value {
+    color: white;
+    font-weight: 500;
+  }
+
+  .ds-lightbox-preview__nav {
+    position: absolute;
+    bottom: var(--space-5);
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: var(--space-2);
+    z-index: 2;
+  }
+
+  .ds-lightbox-preview__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transition: all var(--duration-fast);
+    cursor: pointer;
+  }
+
+  .ds-lightbox-preview__dot--active {
+    background: white;
+    width: 24px;
+    border-radius: var(--radius-full);
+  }
+
+  /* ── LOAD MORE ───────────────────────────────────────────── */
+  .ds-gallery-load-more {
+    text-align: center;
+    margin-top: var(--space-10);
+  }
+
+  .ds-gallery-count {
+    font-size: var(--text-sm);
+    color: var(--ink-400);
+    margin-top: var(--space-4);
+    font-weight: 300;
+  }
+
+  /* ── GALLERY GUIDELINES GRID ─────────────────────────────── */
+  .ds-gallery-guidelines {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+    margin-top: var(--space-10);
+  }
+
+  .ds-gallery-guideline {
+    padding: var(--space-6);
+    background: var(--color-surface);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xs);
+  }
+
+  .ds-gallery-guideline h5 {
+    font-family: var(--font-display);
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: var(--space-2);
+    color: var(--ink-900);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .ds-gallery-guideline p {
+    font-size: var(--text-sm);
+    color: var(--ink-500);
+    line-height: var(--leading-relaxed);
+    font-weight: 300;
+  }
+
+  /* ── GALLERY RESPONSIVE ──────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .ds-gallery-masonry { columns: 2; }
+    .ds-gallery-featured { grid-template-columns: 1fr; }
+    .ds-gallery-featured__hero { grid-row: auto; min-height: 360px; }
+    .ds-gallery-featured__side { min-height: 200px; }
+    .ds-lightbox-preview { flex-direction: column; padding: var(--space-6); min-height: auto; }
+    .ds-lightbox-preview__image { width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    .ds-gallery-masonry { columns: 1; }
+    .ds-gallery-grid { grid-template-columns: 1fr; }
+    .ds-gallery-detail { grid-template-columns: 1fr; }
+    .ds-gallery-guidelines { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="ds-page">
+
+  <!-- ═══════════════════════════════════════════════════════
+       HEADER
+       ═══════════════════════════════════════════════════════ -->
+  <header class="ds-header ds-animate">
+    <div class="ds-header__badge">Design System v1.0</div>
+    <h1 class="ds-header__title">Paint Co. <em>Design System</em></h1>
+    <p class="ds-header__subtitle">A luxurious, masculine design language for a premium painting company. Solid colours, refined restraint, built to command trust.</p>
+  </header>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       1. COLOR PALETTE – VISUAL OVERVIEW
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section ds-animate ds-animate-delay-1">
+    <p class="ds-section__label">01</p>
+    <h2 class="ds-section__title">Color Palette</h2>
+    <p class="ds-section__desc">Six signature colours rooted in luxury and masculinity — deep, solid, and decisive. Each holds its own weight without relying on gradients or playfulness.</p>
+
+    <!-- Interactive Palette Bars -->
+    <div class="ds-palette-visual">
+      <div class="ds-palette-bar" style="background: var(--wine-600); border-radius: var(--radius-xl) var(--radius-md) var(--radius-md) var(--radius-xl);">
+        <div class="ds-palette-bar__label" style="color: white;">
+          <div class="ds-palette-bar__name">Wine</div>
+          <div class="ds-palette-bar__hex">#8B2A3E</div>
+        </div>
+      </div>
+      <div class="ds-palette-bar" style="background: var(--navy-700);">
+        <div class="ds-palette-bar__label" style="color: white;">
+          <div class="ds-palette-bar__name">Navy</div>
+          <div class="ds-palette-bar__hex">#2D3E5A</div>
+        </div>
+      </div>
+      <div class="ds-palette-bar" style="background: var(--slate-600);">
+        <div class="ds-palette-bar__label" style="color: white;">
+          <div class="ds-palette-bar__name">Slate</div>
+          <div class="ds-palette-bar__hex">#4E5766</div>
+        </div>
+      </div>
+      <div class="ds-palette-bar" style="background: var(--brass-500);">
+        <div class="ds-palette-bar__label" style="color: var(--ink-800);">
+          <div class="ds-palette-bar__name">Brass</div>
+          <div class="ds-palette-bar__hex">#B59A4A</div>
+        </div>
+      </div>
+      <div class="ds-palette-bar" style="background: var(--forest-600);">
+        <div class="ds-palette-bar__label" style="color: white;">
+          <div class="ds-palette-bar__name">Forest</div>
+          <div class="ds-palette-bar__hex">#3C614B</div>
+        </div>
+      </div>
+      <div class="ds-palette-bar" style="background: var(--stone-500); border-radius: var(--radius-md) var(--radius-xl) var(--radius-xl) var(--radius-md);">
+        <div class="ds-palette-bar__label" style="color: white;">
+          <div class="ds-palette-bar__name">Stone</div>
+          <div class="ds-palette-bar__hex">#8E8377</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detailed Color Cards -->
+    <div class="ds-colors">
+      <!-- Coral Blush -->
+      <div class="ds-color-card">
+        <div class="ds-color-card__swatch" style="background: var(--wine-600);">
+          <span class="ds-color-card__hex ds-color-card__hex--light">#8B2A3E</span>
+        </div>
+        <div class="ds-color-card__info">
+          <div class="ds-color-card__name">Wine</div>
+          <div class="ds-color-card__role">Primary accent — CTAs, hero highlights, commanding presence</div>
+          <div class="ds-color-scale">
+            <div class="ds-color-scale__step" style="background:var(--wine-50)" data-label="50"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-100)" data-label="100"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-200)" data-label="200"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-300)" data-label="300"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-400)" data-label="400"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-500)" data-label="500"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-600)" data-label="600"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-700)" data-label="700"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-800)" data-label="800"></div>
+            <div class="ds-color-scale__step" style="background:var(--wine-900)" data-label="900"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ocean Teal -->
+      <div class="ds-color-card">
+        <div class="ds-color-card__swatch" style="background: var(--navy-700);">
+          <span class="ds-color-card__hex ds-color-card__hex--light">#2D3E5A</span>
+        </div>
+        <div class="ds-color-card__info">
+          <div class="ds-color-card__name">Navy</div>
+          <div class="ds-color-card__role">Secondary — authority, trust signals, deep sophistication</div>
+          <div class="ds-color-scale">
+            <div class="ds-color-scale__step" style="background:var(--navy-50)" data-label="50"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-100)" data-label="100"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-200)" data-label="200"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-300)" data-label="300"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-400)" data-label="400"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-500)" data-label="500"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-600)" data-label="600"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-700)" data-label="700"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-800)" data-label="800"></div>
+            <div class="ds-color-scale__step" style="background:var(--navy-900)" data-label="900"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lavender Sky -->
+      <div class="ds-color-card">
+        <div class="ds-color-card__swatch" style="background: var(--slate-600);">
+          <span class="ds-color-card__hex ds-color-card__hex--light">#4E5766</span>
+        </div>
+        <div class="ds-color-card__info">
+          <div class="ds-color-card__name">Slate</div>
+          <div class="ds-color-card__role">Accent — refined depth, secondary text, structural weight</div>
+          <div class="ds-color-scale">
+            <div class="ds-color-scale__step" style="background:var(--slate-50)" data-label="50"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-100)" data-label="100"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-200)" data-label="200"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-300)" data-label="300"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-400)" data-label="400"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-500)" data-label="500"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-600)" data-label="600"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-700)" data-label="700"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-800)" data-label="800"></div>
+            <div class="ds-color-scale__step" style="background:var(--slate-900)" data-label="900"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Golden Ochre -->
+      <div class="ds-color-card">
+        <div class="ds-color-card__swatch" style="background: var(--brass-500);">
+          <span class="ds-color-card__hex ds-color-card__hex--dark">#B59A4A</span>
+        </div>
+        <div class="ds-color-card__info">
+          <div class="ds-color-card__name">Brass</div>
+          <div class="ds-color-card__role">Warmth — premium accents, craftsmanship, ratings &amp; highlights</div>
+          <div class="ds-color-scale">
+            <div class="ds-color-scale__step" style="background:var(--brass-50)" data-label="50"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-100)" data-label="100"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-200)" data-label="200"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-300)" data-label="300"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-400)" data-label="400"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-500)" data-label="500"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-600)" data-label="600"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-700)" data-label="700"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-800)" data-label="800"></div>
+            <div class="ds-color-scale__step" style="background:var(--brass-900)" data-label="900"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sage Leaf -->
+      <div class="ds-color-card">
+        <div class="ds-color-card__swatch" style="background: var(--forest-600);">
+          <span class="ds-color-card__hex ds-color-card__hex--light">#3C614B</span>
+        </div>
+        <div class="ds-color-card__info">
+          <div class="ds-color-card__name">Forest</div>
+          <div class="ds-color-card__role">Nature — success confirmations, eco-friendly, grounded stability</div>
+          <div class="ds-color-scale">
+            <div class="ds-color-scale__step" style="background:var(--forest-50)" data-label="50"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-100)" data-label="100"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-200)" data-label="200"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-300)" data-label="300"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-400)" data-label="400"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-500)" data-label="500"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-600)" data-label="600"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-700)" data-label="700"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-800)" data-label="800"></div>
+            <div class="ds-color-scale__step" style="background:var(--forest-900)" data-label="900"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sky Blue -->
+      <div class="ds-color-card">
+        <div class="ds-color-card__swatch" style="background: var(--stone-500);">
+          <span class="ds-color-card__hex ds-color-card__hex--light">#8E8377</span>
+        </div>
+        <div class="ds-color-card__info">
+          <div class="ds-color-card__name">Stone</div>
+          <div class="ds-color-card__role">Neutral — borders, muted text, earthy warmth, subtle structure</div>
+          <div class="ds-color-scale">
+            <div class="ds-color-scale__step" style="background:var(--stone-50)" data-label="50"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-100)" data-label="100"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-200)" data-label="200"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-300)" data-label="300"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-400)" data-label="400"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-500)" data-label="500"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-600)" data-label="600"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-700)" data-label="700"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-800)" data-label="800"></div>
+            <div class="ds-color-scale__step" style="background:var(--stone-900)" data-label="900"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Canvas / Neutrals ─────────────────────────────────── -->
+  <section class="ds-section">
+    <p class="ds-section__label">01b</p>
+    <h2 class="ds-section__title">Canvas &amp; Neutrals</h2>
+    <p class="ds-section__desc">The breathing space. Three canvas tones in warm ivory provide a quiet, luxurious backdrop. Ink scale from 50–900 for all text and UI chrome.</p>
+
+    <div class="ds-canvas-row">
+      <div class="ds-canvas-card" style="background: var(--canvas);">
+        <span>Canvas</span>
+        <span>#FAF9F6</span>
+      </div>
+      <div class="ds-canvas-card" style="background: var(--canvas-warm);">
+        <span>Canvas Warm</span>
+        <span>#F5F2EC</span>
+      </div>
+      <div class="ds-canvas-card" style="background: var(--canvas-cool);">
+        <span>Canvas Cool</span>
+        <span>#F2F1EE</span>
+      </div>
+    </div>
+
+    <div style="display:flex; gap:2px; border-radius: var(--radius-md); overflow:hidden; height:48px;">
+      <div style="flex:1; background:var(--ink-900); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-family:monospace;">900</div>
+      <div style="flex:1; background:var(--ink-800); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-family:monospace;">800</div>
+      <div style="flex:1; background:var(--ink-700); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-family:monospace;">700</div>
+      <div style="flex:1; background:var(--ink-600); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-family:monospace;">600</div>
+      <div style="flex:1; background:var(--ink-500); display:flex; align-items:center; justify-content:center; color:white; font-size:11px; font-family:monospace;">500</div>
+      <div style="flex:1; background:var(--ink-400); display:flex; align-items:center; justify-content:center; color:var(--ink-900); font-size:11px; font-family:monospace;">400</div>
+      <div style="flex:1; background:var(--ink-300); display:flex; align-items:center; justify-content:center; color:var(--ink-900); font-size:11px; font-family:monospace;">300</div>
+      <div style="flex:1; background:var(--ink-200); display:flex; align-items:center; justify-content:center; color:var(--ink-900); font-size:11px; font-family:monospace;">200</div>
+      <div style="flex:1; background:var(--ink-100); display:flex; align-items:center; justify-content:center; color:var(--ink-900); font-size:11px; font-family:monospace;">100</div>
+      <div style="flex:1; background:var(--ink-50); display:flex; align-items:center; justify-content:center; color:var(--ink-900); font-size:11px; font-family:monospace;">50</div>
+    </div>
+  </section>
+
+  <!-- ── Gradients ─────────────────────────────────────────── -->
+  <section class="ds-section">
+    <p class="ds-section__label">01c</p>
+    <h2 class="ds-section__title">Colour Pairings</h2>
+    <p class="ds-section__desc">Solid, confident colour combinations for sections, cards, and accents. No gradients — just purposeful pairing of deep tones with warm neutrals.</p>
+
+    <div class="ds-gradient-grid">
+      <div class="ds-gradient-card" style="background: var(--wine-600);">
+        <span>Wine + Brass</span>
+      </div>
+      <div class="ds-gradient-card" style="background: var(--navy-700);">
+        <span>Navy + Stone</span>
+      </div>
+      <div class="ds-gradient-card" style="background: var(--forest-600);">
+        <span>Forest + Brass</span>
+      </div>
+      <div class="ds-gradient-card" style="background: var(--slate-700);">
+        <span>Slate + Wine</span>
+      </div>
+      <div class="ds-gradient-card" style="background: var(--brass-500);">
+        <span style="color:var(--ink-800);">Brass + Navy</span>
+      </div>
+      <div class="ds-gradient-card" style="background: var(--ink-900);">
+        <span style="color:var(--ink-300);">Ink + Brass</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       2. TYPOGRAPHY
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">02</p>
+    <h2 class="ds-section__title">Typography</h2>
+    <p class="ds-section__desc">A refined serif/sans-serif pairing. Playfair Display for emotional headlines, DM Sans for clean, readable body text.</p>
+
+    <div class="ds-type-pair">
+      <div class="ds-type-pair__block">
+        <h4>Display — Playfair Display</h4>
+        <div class="ds-font-display">Beautiful spaces <em>begin here.</em></div>
+      </div>
+      <div class="ds-type-pair__block">
+        <h4>Body — DM Sans</h4>
+        <div class="ds-font-body">We believe every wall tells a story. Our professional painting services transform homes, offices, and venues into spaces that inspire — with precision, care, and colors that last.</div>
+      </div>
+    </div>
+
+    <div class="ds-type-specimen">
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">72px</div>
+          <div class="ds-type-meta__name">Display XL</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-display); font-size:var(--text-7xl); font-weight:500; line-height:var(--leading-tight); letter-spacing:var(--tracking-tight);">Color</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">60px</div>
+          <div class="ds-type-meta__name">Display L</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-display); font-size:var(--text-6xl); font-weight:500; line-height:var(--leading-tight); letter-spacing:var(--tracking-tight);">Fresh Walls</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">48px</div>
+          <div class="ds-type-meta__name">Heading 1</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-display); font-size:var(--text-5xl); font-weight:500; line-height:var(--leading-tight);">Premium Painting</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">36px</div>
+          <div class="ds-type-meta__name">Heading 2</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-display); font-size:var(--text-4xl); font-weight:500; line-height:var(--leading-snug);">Our Services</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">24px</div>
+          <div class="ds-type-meta__name">Heading 3</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-display); font-size:var(--text-2xl); font-weight:600; line-height:var(--leading-snug);">Interior & Exterior</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">18px</div>
+          <div class="ds-type-meta__name">Body Large</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-body); font-size:var(--text-lg); font-weight:300; line-height:var(--leading-relaxed); color:var(--ink-600);">We bring walls to life with expert craftsmanship and premium finishes that stand the test of time.</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">16px</div>
+          <div class="ds-type-meta__name">Body</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-body); font-size:var(--text-base); font-weight:400; line-height:var(--leading-normal); color:var(--ink-600);">From colour consultation to the final coat, our team ensures every detail is perfect. We use only eco-friendly, low-VOC paints.</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">14px</div>
+          <div class="ds-type-meta__name">Small</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-body); font-size:var(--text-sm); font-weight:400; line-height:var(--leading-normal); color:var(--ink-500);">Free estimates available. Licensed and insured. Serving the greater metro area since 2012.</div>
+      </div>
+      <div class="ds-type-row">
+        <div class="ds-type-meta">
+          <div class="ds-type-meta__size">12px</div>
+          <div class="ds-type-meta__name">Caption</div>
+        </div>
+        <div class="ds-type-sample" style="font-family:var(--font-body); font-size:var(--text-xs); font-weight:500; line-height:var(--leading-normal); color:var(--ink-400); letter-spacing:var(--tracking-widest); text-transform:uppercase;">Residential · Commercial · Specialty Finishes</div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       3. SPACING
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">03</p>
+    <h2 class="ds-section__title">Spacing</h2>
+    <p class="ds-section__desc">A 4px base grid with generous breathing room. Apple-like negative space is essential to the premium feel.</p>
+
+    <div class="ds-spacing-grid">
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-1</span><div class="ds-spacing-bar" style="width:16px;" data-px="4px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-2</span><div class="ds-spacing-bar" style="width:32px;" data-px="8px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-4</span><div class="ds-spacing-bar" style="width:64px;" data-px="16px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-6</span><div class="ds-spacing-bar" style="width:96px;" data-px="24px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-8</span><div class="ds-spacing-bar" style="width:128px;" data-px="32px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-12</span><div class="ds-spacing-bar" style="width:192px;" data-px="48px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-16</span><div class="ds-spacing-bar" style="width:256px;" data-px="64px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-20</span><div class="ds-spacing-bar" style="width:320px;" data-px="80px"></div></div>
+      <div class="ds-spacing-row"><span class="ds-spacing-label">--space-24</span><div class="ds-spacing-bar" style="width:384px;" data-px="96px"></div></div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       4. BORDER RADIUS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">04</p>
+    <h2 class="ds-section__title">Border Radius</h2>
+    <p class="ds-section__desc">Soft, approachable corners. Larger radii for cards and containers, tighter radii for small UI elements.</p>
+
+    <div class="ds-radius-grid">
+      <div class="ds-radius-item">
+        <div class="ds-radius-box" style="border-radius: var(--radius-sm);"></div>
+        <span>6px — sm</span>
+      </div>
+      <div class="ds-radius-item">
+        <div class="ds-radius-box" style="border-radius: var(--radius-md);"></div>
+        <span>10px — md</span>
+      </div>
+      <div class="ds-radius-item">
+        <div class="ds-radius-box" style="border-radius: var(--radius-lg);"></div>
+        <span>16px — lg</span>
+      </div>
+      <div class="ds-radius-item">
+        <div class="ds-radius-box" style="border-radius: var(--radius-xl);"></div>
+        <span>24px — xl</span>
+      </div>
+      <div class="ds-radius-item">
+        <div class="ds-radius-box" style="border-radius: var(--radius-2xl);"></div>
+        <span>32px — 2xl</span>
+      </div>
+      <div class="ds-radius-item">
+        <div class="ds-radius-box" style="border-radius: var(--radius-full);"></div>
+        <span>full — pill</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       5. SHADOWS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">05</p>
+    <h2 class="ds-section__title">Shadows</h2>
+    <p class="ds-section__desc">Subtle, layered shadows for depth without heaviness. Colored glows available for accent elements.</p>
+
+    <div class="ds-shadow-grid">
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-xs);"></div>
+        <span>xs</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-sm);"></div>
+        <span>sm</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-md);"></div>
+        <span>md</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-lg);"></div>
+        <span>lg</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-xl);"></div>
+        <span>xl</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-glow-coral);"></div>
+        <span>glow-coral</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-glow-teal);"></div>
+        <span>glow-teal</span>
+      </div>
+      <div class="ds-shadow-item">
+        <div class="ds-shadow-box" style="box-shadow: var(--shadow-glow-lavender);"></div>
+        <span>glow-lavender</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       6. COMPONENTS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">06</p>
+    <h2 class="ds-section__title">Components</h2>
+    <p class="ds-section__desc">Core UI building blocks — buttons, inputs, tags, and cards. Each designed for clarity and delight.</p>
+
+    <div class="ds-component-grid">
+      <!-- Buttons -->
+      <div class="ds-component-card">
+        <div class="ds-component-card__label">Buttons</div>
+        <button class="ds-btn ds-btn--primary">Get a Quote</button>
+        <button class="ds-btn ds-btn--secondary">View Portfolio</button>
+        <button class="ds-btn ds-btn--accent">Book Now</button>
+        <button class="ds-btn ds-btn--ghost">Learn More →</button>
+        <button class="ds-btn ds-btn--primary ds-btn--lg">Get Started Today</button>
+      </div>
+
+      <!-- Input -->
+      <div class="ds-component-card">
+        <div class="ds-component-card__label">Inputs</div>
+        <input class="ds-input" type="text" placeholder="Your name">
+        <input class="ds-input" type="email" placeholder="Email address">
+        <input class="ds-input" type="tel" placeholder="Phone number">
+      </div>
+
+      <!-- Tags -->
+      <div class="ds-component-card">
+        <div class="ds-component-card__label">Tags / Badges</div>
+        <div style="display:flex; flex-wrap:wrap; gap:var(--space-2);">
+          <span class="ds-tag ds-tag--coral">Residential</span>
+          <span class="ds-tag ds-tag--teal">Commercial</span>
+          <span class="ds-tag ds-tag--lavender">Premium</span>
+          <span class="ds-tag ds-tag--ochre">Featured</span>
+          <span class="ds-tag ds-tag--sage">Eco-Friendly</span>
+          <span class="ds-tag ds-tag--sky">Exterior</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       7. EXAMPLE LAYOUTS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">07</p>
+    <h2 class="ds-section__title">Example Layouts</h2>
+    <p class="ds-section__desc">Pre-composed sections showing how the system comes together. These are reference implementations for the AI agent.</p>
+
+    <!-- Navigation -->
+    <nav class="ds-nav-example">
+      <div class="ds-nav-logo">
+        <span class="ds-nav-logo__dot"></span>
+        Paint Co.
+      </div>
+      <ul class="ds-nav-links">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="ds-nav-cta">
+        <a href="#" class="ds-btn ds-btn--ghost">Call Us</a>
+        <a href="#" class="ds-btn ds-btn--primary">Get a Quote</a>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <div class="ds-hero-example">
+      <div class="ds-hero-example__tag">✦ Trusted by 500+ homeowners</div>
+      <h2 class="ds-hero-example__heading">Walls that speak <em>volumes.</em></h2>
+      <p class="ds-hero-example__body">Professional painting services for homes, offices, and venues. Precision craftsmanship with finishes you'll admire for years.</p>
+      <div class="ds-hero-example__actions">
+        <a href="#" class="ds-btn ds-btn--accent ds-btn--lg">Get a Free Quote</a>
+        <a href="#" class="ds-btn ds-btn--secondary ds-btn--lg">See Our Work</a>
+      </div>
+    </div>
+
+    <!-- Service Cards -->
+    <div class="ds-service-cards">
+      <div class="ds-service-card">
+        <div class="ds-service-card__icon">🏠</div>
+        <h3 class="ds-service-card__title">Residential</h3>
+        <p class="ds-service-card__desc">Interior and exterior painting for homes of every size. Premium finishes that protect and transform.</p>
+        <a href="#" class="ds-service-card__link">Learn more <span>→</span></a>
+      </div>
+      <div class="ds-service-card">
+        <div class="ds-service-card__icon">🏢</div>
+        <h3 class="ds-service-card__title">Commercial</h3>
+        <p class="ds-service-card__desc">Offices, retail spaces, and large venues. Minimal disruption, maximum impact for your business.</p>
+        <a href="#" class="ds-service-card__link">Learn more <span>→</span></a>
+      </div>
+      <div class="ds-service-card">
+        <div class="ds-service-card__icon">🎨</div>
+        <h3 class="ds-service-card__title">Specialty Finishes</h3>
+        <p class="ds-service-card__desc">Feature walls, faux finishes, decorative techniques, and murals. Bring your creative vision to life.</p>
+        <a href="#" class="ds-service-card__link">Learn more <span>→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonial -->
+  <section class="ds-section">
+    <div class="ds-testimonial">
+      <div class="ds-testimonial__stars">★ ★ ★ ★ ★</div>
+      <p class="ds-testimonial__text">"They transformed our entire home in just three days. The attention to detail was incredible — every edge, every corner, absolutely perfect."</p>
+      <div class="ds-testimonial__author">
+        <div class="ds-testimonial__avatar"></div>
+        <div>
+          <div class="ds-testimonial__name">Sarah Mitchell</div>
+          <div class="ds-testimonial__role">Homeowner, Hampstead</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <section class="ds-section">
+    <div class="ds-footer-example">
+      <div>
+        <div class="ds-footer-brand">
+          <span class="ds-footer-brand__dot"></span>
+          Paint Co.
+        </div>
+        <p class="ds-footer-tagline">Professional painting services that bring your spaces to life. Licensed, insured, and committed to excellence since 2012.</p>
+      </div>
+      <div class="ds-footer-col">
+        <h5>Services</h5>
+        <a href="#">Residential</a>
+        <a href="#">Commercial</a>
+        <a href="#">Specialty Finishes</a>
+        <a href="#">Colour Consultation</a>
+      </div>
+      <div class="ds-footer-col">
+        <h5>Company</h5>
+        <a href="#">About Us</a>
+        <a href="#">Portfolio</a>
+        <a href="#">Testimonials</a>
+        <a href="#">Careers</a>
+      </div>
+      <div class="ds-footer-col">
+        <h5>Contact</h5>
+        <a href="#">Get a Quote</a>
+        <a href="#">020 7946 0958</a>
+        <a href="#">hello@paintco.co.uk</a>
+        <a href="#">Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       8. GALLERY / PORTFOLIO PATTERNS
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">08</p>
+    <h2 class="ds-section__title">Gallery &amp; Portfolio</h2>
+    <p class="ds-section__desc">Four layout patterns for showcasing previous work — from immersive masonry to detailed project cards. Each designed to let the photography breathe.</p>
+
+    <!-- ── FILTER BAR ──────────────────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-4);">Filter Bar</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">Pill-style filters allow visitors to quickly narrow by project type. Active state uses a subtle surface + border treatment.</p>
+
+    <div class="ds-gallery-filters">
+      <button class="ds-gallery-filter ds-gallery-filter--active">All Projects</button>
+      <button class="ds-gallery-filter">Residential</button>
+      <button class="ds-gallery-filter">Commercial</button>
+      <button class="ds-gallery-filter">Exterior</button>
+      <button class="ds-gallery-filter">Specialty Finishes</button>
+      <button class="ds-gallery-filter">Venues</button>
+    </div>
+
+    <!-- ── LAYOUT A: MASONRY ───────────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Layout A — Masonry Grid</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">The primary recommendation. Varied heights create visual rhythm and feel organic — perfect for showcasing spaces of different proportions. Hover reveals project details via a gradient overlay.</p>
+
+    <div class="ds-gallery-masonry">
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:320px; background: var(--wine-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Residential</span>
+          <h4 class="ds-gallery-item__overlay-title">Victorian Terrace Revival</h4>
+          <p class="ds-gallery-item__overlay-meta">Islington, London · Interior</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:220px; background: var(--navy-200);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Commercial</span>
+          <h4 class="ds-gallery-item__overlay-title">Tech Startup Office</h4>
+          <p class="ds-gallery-item__overlay-meta">Shoreditch · Full Repaint</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:280px; background: var(--slate-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Specialty</span>
+          <h4 class="ds-gallery-item__overlay-title">Boutique Hotel Lobby</h4>
+          <p class="ds-gallery-item__overlay-meta">Mayfair · Feature Walls</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:200px; background: var(--brass-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Exterior</span>
+          <h4 class="ds-gallery-item__overlay-title">Georgian Townhouse</h4>
+          <p class="ds-gallery-item__overlay-meta">Chelsea · Exterior Masonry</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:260px; background: var(--forest-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Residential</span>
+          <h4 class="ds-gallery-item__overlay-title">Modern Kitchen Refresh</h4>
+          <p class="ds-gallery-item__overlay-meta">Hampstead · Cabinet Painting</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:300px; background: var(--stone-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Venue</span>
+          <h4 class="ds-gallery-item__overlay-title">Event Space Transformation</h4>
+          <p class="ds-gallery-item__overlay-meta">Hackney · Full Interior</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:180px; background: var(--wine-200);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Commercial</span>
+          <h4 class="ds-gallery-item__overlay-title">Restaurant Rebrand</h4>
+          <p class="ds-gallery-item__overlay-meta">Soho · Accent Walls</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:240px; background: var(--navy-200);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Residential</span>
+          <h4 class="ds-gallery-item__overlay-title">Nursery & Kids Rooms</h4>
+          <p class="ds-gallery-item__overlay-meta">Wimbledon · Interior</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="height:280px; background: var(--brass-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <span class="ds-gallery-item__overlay-tag">Exterior</span>
+          <h4 class="ds-gallery-item__overlay-title">Period Property Refresh</h4>
+          <p class="ds-gallery-item__overlay-meta">Richmond · Full Exterior</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LAYOUT B: FEATURED + GRID ──────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Layout B — Featured + Grid</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">Hero a flagship project alongside smaller supporting images. Ideal for the homepage or a "Featured Work" section. The hero card has a persistent overlay with project info.</p>
+
+    <div class="ds-gallery-featured">
+      <div class="ds-gallery-featured__hero">
+        <div class="ds-gallery-item__img" style="height:100%; background: var(--navy-800);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-tag">Featured Project</span>
+          <h4 class="ds-gallery-item__overlay-title">The Kensington Residence</h4>
+          <p class="ds-gallery-item__overlay-meta">Full interior transformation · 12 rooms · 3 weeks</p>
+        </div>
+      </div>
+      <div class="ds-gallery-featured__side">
+        <div class="ds-gallery-item__img" style="height:100%; background: var(--navy-200);"></div>
+        <div class="ds-gallery-item__overlay">
+          <h4 class="ds-gallery-item__overlay-title">Clerkenwell Studio</h4>
+          <p class="ds-gallery-item__overlay-meta">Commercial · Matte Finish</p>
+        </div>
+      </div>
+      <div class="ds-gallery-featured__side">
+        <div class="ds-gallery-item__img" style="height:100%; background: var(--brass-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <h4 class="ds-gallery-item__overlay-title">Notting Hill Terrace</h4>
+          <p class="ds-gallery-item__overlay-meta">Exterior · Heritage Palette</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LAYOUT C: UNIFORM GRID ──────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Layout C — Uniform Grid</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">Clean, structured 3-column grid with consistent 4:3 aspect ratios. Best for a dedicated portfolio page where every project gets equal visual weight.</p>
+
+    <div class="ds-gallery-grid">
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="background: var(--forest-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <h4 class="ds-gallery-item__overlay-title">Camden Loft</h4>
+          <p class="ds-gallery-item__overlay-meta">Residential · Interior</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="background: var(--stone-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <h4 class="ds-gallery-item__overlay-title">Canary Wharf Office</h4>
+          <p class="ds-gallery-item__overlay-meta">Commercial · Full Floor</p>
+        </div>
+      </div>
+      <div class="ds-gallery-item">
+        <div class="ds-gallery-item__img" style="background: var(--slate-100);"></div>
+        <div class="ds-gallery-item__overlay">
+          <span class="ds-gallery-item__overlay-arrow">↗</span>
+          <h4 class="ds-gallery-item__overlay-title">Wedding Venue</h4>
+          <p class="ds-gallery-item__overlay-meta">Venue · Specialty</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── LAYOUT D: DETAIL CARDS ──────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Layout D — Project Detail Cards</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">Cards with visible metadata beneath the image — project name, location, and quick stats. Best when clients need to evaluate scope and specifics at a glance.</p>
+
+    <div class="ds-gallery-detail">
+      <div class="ds-gallery-detail-card">
+        <div class="ds-gallery-detail-card__img" style="background: var(--wine-100);">
+          <span class="ds-gallery-detail-card__badge">Residential</span>
+        </div>
+        <div class="ds-gallery-detail-card__body">
+          <h4 class="ds-gallery-detail-card__title">Hampstead Family Home</h4>
+          <p class="ds-gallery-detail-card__location">North London · Interior & Exterior</p>
+          <div class="ds-gallery-detail-card__stats">
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">8 rooms</span>
+              <span class="ds-gallery-detail-card__stat-label">Scope</span>
+            </div>
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">2 weeks</span>
+              <span class="ds-gallery-detail-card__stat-label">Duration</span>
+            </div>
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">Farrow & Ball</span>
+              <span class="ds-gallery-detail-card__stat-label">Paint Brand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ds-gallery-detail-card">
+        <div class="ds-gallery-detail-card__img" style="background: var(--navy-100);">
+          <span class="ds-gallery-detail-card__badge">Commercial</span>
+        </div>
+        <div class="ds-gallery-detail-card__body">
+          <h4 class="ds-gallery-detail-card__title">Soho Creative Agency</h4>
+          <p class="ds-gallery-detail-card__location">Central London · Full Interior</p>
+          <div class="ds-gallery-detail-card__stats">
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">3 floors</span>
+              <span class="ds-gallery-detail-card__stat-label">Scope</span>
+            </div>
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">10 days</span>
+              <span class="ds-gallery-detail-card__stat-label">Duration</span>
+            </div>
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">Dulux Trade</span>
+              <span class="ds-gallery-detail-card__stat-label">Paint Brand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ds-gallery-detail-card">
+        <div class="ds-gallery-detail-card__img" style="background: var(--slate-100);">
+          <span class="ds-gallery-detail-card__badge">Specialty</span>
+        </div>
+        <div class="ds-gallery-detail-card__body">
+          <h4 class="ds-gallery-detail-card__title">Marylebone Bistro</h4>
+          <p class="ds-gallery-detail-card__location">West End · Feature Walls & Ceiling</p>
+          <div class="ds-gallery-detail-card__stats">
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">Faux marble</span>
+              <span class="ds-gallery-detail-card__stat-label">Technique</span>
+            </div>
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">5 days</span>
+              <span class="ds-gallery-detail-card__stat-label">Duration</span>
+            </div>
+            <div class="ds-gallery-detail-card__stat">
+              <span class="ds-gallery-detail-card__stat-value">Custom mix</span>
+              <span class="ds-gallery-detail-card__stat-label">Paint Brand</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BEFORE / AFTER SLIDER ───────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Before &amp; After Slider</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">A draggable comparison slider to show transformation impact. The most powerful trust-building element — use it on the homepage or dedicated project pages.</p>
+
+    <div class="ds-before-after">
+      <div class="ds-before-after__img" style="background: linear-gradient(90deg, var(--ink-200) 0%, var(--ink-200) 50%, var(--canvas-warm) 50%, var(--canvas-warm) 100%);"></div>
+      <div class="ds-before-after__divider"></div>
+      <div class="ds-before-after__handle">◂ ▸</div>
+      <span class="ds-before-after__label ds-before-after__label--before">Before</span>
+      <span class="ds-before-after__label ds-before-after__label--after">After</span>
+    </div>
+
+    <!-- ── LIGHTBOX PREVIEW ────────────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Lightbox / Expanded View</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">When a gallery item is clicked, open a full-screen dark overlay with the expanded image and project details. Includes dot pagination for browsing multiple photos within a project.</p>
+
+    <div class="ds-lightbox-preview">
+      <div class="ds-lightbox-preview__backdrop"></div>
+      <button class="ds-lightbox-preview__close">✕</button>
+      <div class="ds-lightbox-preview__image" style="background: var(--navy-800);"></div>
+      <div class="ds-lightbox-preview__info">
+        <span class="ds-lightbox-preview__tag">Residential</span>
+        <h4 class="ds-lightbox-preview__title">The Kensington Residence</h4>
+        <p class="ds-lightbox-preview__location">South Kensington, London</p>
+        <div class="ds-lightbox-preview__details">
+          <div class="ds-lightbox-preview__detail">
+            <span class="ds-lightbox-preview__detail-label">Type</span>
+            <span class="ds-lightbox-preview__detail-value">Full Interior</span>
+          </div>
+          <div class="ds-lightbox-preview__detail">
+            <span class="ds-lightbox-preview__detail-label">Rooms</span>
+            <span class="ds-lightbox-preview__detail-value">12</span>
+          </div>
+          <div class="ds-lightbox-preview__detail">
+            <span class="ds-lightbox-preview__detail-label">Duration</span>
+            <span class="ds-lightbox-preview__detail-value">3 weeks</span>
+          </div>
+          <div class="ds-lightbox-preview__detail">
+            <span class="ds-lightbox-preview__detail-label">Paint</span>
+            <span class="ds-lightbox-preview__detail-value">Farrow & Ball</span>
+          </div>
+        </div>
+      </div>
+      <div class="ds-lightbox-preview__nav">
+        <div class="ds-lightbox-preview__dot ds-lightbox-preview__dot--active"></div>
+        <div class="ds-lightbox-preview__dot"></div>
+        <div class="ds-lightbox-preview__dot"></div>
+        <div class="ds-lightbox-preview__dot"></div>
+        <div class="ds-lightbox-preview__dot"></div>
+      </div>
+    </div>
+
+    <!-- ── LOAD MORE PATTERN ───────────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-2);">Pagination</h4>
+    <p style="font-size:var(--text-sm); color:var(--ink-500); margin-bottom:var(--space-6); font-weight:300;">Use a "Load More" button rather than traditional page numbers. Keeps the experience fluid and modern. Show a count indicator below.</p>
+
+    <div class="ds-gallery-load-more">
+      <button class="ds-btn ds-btn--secondary">Load More Projects</button>
+      <p class="ds-gallery-count">Showing 9 of 47 projects</p>
+    </div>
+
+    <br><br>
+
+    <!-- ── GALLERY GUIDELINES ──────────────────────────────── -->
+    <h4 style="font-size:var(--text-xs); font-weight:600; letter-spacing:var(--tracking-widest); text-transform:uppercase; color:var(--ink-400); margin-bottom:var(--space-4);">Gallery Design Guidelines</h4>
+
+    <div class="ds-gallery-guidelines">
+      <div class="ds-gallery-guideline">
+        <h5>📐 Image Ratios</h5>
+        <p>Use 16:10 or 4:3 for uniform grids. Masonry layout can use natural photo ratios but avoid anything taller than 2:1 or wider than 3:1 to keep the rhythm balanced.</p>
+      </div>
+      <div class="ds-gallery-guideline">
+        <h5>📸 Photography Style</h5>
+        <p>Shoot finished spaces with natural daylight. Wide-angle shots that show the whole room. Avoid close-ups of paint cans or rollers — focus on the result, not the process. Consistent white balance across the set.</p>
+      </div>
+      <div class="ds-gallery-guideline">
+        <h5>🏷️ Project Metadata</h5>
+        <p>Every gallery item must include: project name, location, category (Residential / Commercial / Specialty / Exterior / Venue), and optionally: duration, number of rooms, and paint brand used.</p>
+      </div>
+      <div class="ds-gallery-guideline">
+        <h5>✨ Hover & Interaction</h5>
+        <p>Use a bottom-gradient overlay on hover (never a flat colour). Reveal project title, location, and category tag. Include a subtle scale transform (1.5–2%) and the arrow icon top-right for clickability.</p>
+      </div>
+      <div class="ds-gallery-guideline">
+        <h5>🎯 Layout Recommendations</h5>
+        <p>Homepage: Use Layout B (Featured + Grid) with 3 projects max. Portfolio page: Use Layout A (Masonry) as primary with filter bar. Individual project pages: Use Layout C (Uniform Grid) with Before/After slider at the top.</p>
+      </div>
+      <div class="ds-gallery-guideline">
+        <h5>🌙 Lightbox Behaviour</h5>
+        <p>Dark overlay at 95% opacity. Image should not exceed 80% of viewport width. Include keyboard navigation (arrow keys, Escape to close). Dot pagination for multi-photo projects. Swipe support on mobile.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       9. USAGE GUIDELINES
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section">
+    <p class="ds-section__label">09</p>
+    <h2 class="ds-section__title">Usage Guidelines</h2>
+    <p class="ds-section__desc">Key principles to maintain consistency and quality across all pages.</p>
+
+    <div class="ds-do-dont">
+      <div class="ds-do">
+        <h5>✓ Do</h5>
+        <p>Use generous whitespace between sections (80–96px). Let content breathe like an Apple product page. Use Wine as the primary CTA colour. Pair Playfair Display headlines with DM Sans body text. Keep navigation simple — max 5 links. Use solid colour backgrounds and let photography carry visual interest. Default to the warm Canvas (#FAF9F6) background.</p>
+      </div>
+      <div class="ds-dont">
+        <h5>✗ Don't</h5>
+        <p>Don't use more than two signature colours per section. Avoid heavy drop shadows or hard borders. Don't mix too many type weights — stick to 300, 400, 500, 600. Never use the full 10-step colour scale on one page — pick 3–4 stops per colour. Don't use decorative gradients — keep colours solid and purposeful. Avoid stock photos of paint rollers — favour finished spaces.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="ds-divider">
+
+  <!-- ═══════════════════════════════════════════════════════
+       9. DESIGN PRINCIPLES
+       ═══════════════════════════════════════════════════════ -->
+  <section class="ds-section" style="padding-bottom: var(--space-16);">
+    <p class="ds-section__label">10</p>
+    <h2 class="ds-section__title">Design Principles</h2>
+    <p class="ds-section__desc">The philosophy behind every pixel.</p>
+
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:var(--space-6); margin-top:var(--space-8);">
+      <div style="padding:var(--space-6); background:var(--wine-50); border-radius:var(--radius-xl);">
+        <div style="font-size:var(--text-2xl); margin-bottom:var(--space-3);">✦</div>
+        <h4 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:600; margin-bottom:var(--space-2);">Solid, Not Flashy</h4>
+        <p style="font-size:var(--text-sm); color:var(--ink-500); line-height:var(--leading-relaxed);">Every colour earns its place through depth and richness. No gradients, no tricks — just confident, assured colour choices.</p>
+      </div>
+      <div style="padding:var(--space-6); background:var(--navy-50); border-radius:var(--radius-xl);">
+        <div style="font-size:var(--text-2xl); margin-bottom:var(--space-3);">◯</div>
+        <h4 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:600; margin-bottom:var(--space-2);">Breathe</h4>
+        <p style="font-size:var(--text-sm); color:var(--ink-500); line-height:var(--leading-relaxed);">Generous whitespace is a feature. Let content float in space like an Apple product page. Restraint communicates luxury.</p>
+      </div>
+      <div style="padding:var(--space-6); background:var(--slate-50); border-radius:var(--radius-xl);">
+        <div style="font-size:var(--text-2xl); margin-bottom:var(--space-3);">→</div>
+        <h4 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:600; margin-bottom:var(--space-2);">Effortless Navigation</h4>
+        <p style="font-size:var(--text-sm); color:var(--ink-500); line-height:var(--leading-relaxed);">Users should find what they need in two clicks or less. Simplicity is king. No clutter, no distraction.</p>
+      </div>
+      <div style="padding:var(--space-6); background:var(--brass-50); border-radius:var(--radius-xl);">
+        <div style="font-size:var(--text-2xl); margin-bottom:var(--space-3);">♦</div>
+        <h4 style="font-family:var(--font-display); font-size:var(--text-lg); font-weight:600; margin-bottom:var(--space-2);">Craft &amp; Authority</h4>
+        <p style="font-size:var(--text-sm); color:var(--ink-500); line-height:var(--leading-relaxed);">Every detail communicates mastery. The design itself should feel like a tailored suit — precise, deliberate, premium.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
