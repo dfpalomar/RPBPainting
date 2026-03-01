@@ -1,19 +1,71 @@
+import { useEffect } from 'react'
+
+import { Footer } from './components/layout/Footer'
+import { Header } from './components/layout/Header'
+import { MobileCallButton } from './components/layout/MobileCallButton'
+import { About } from './components/sections/About'
+import { BeforeAfter } from './components/sections/BeforeAfter'
+import { Contact } from './components/sections/Contact'
+import { FAQ } from './components/sections/FAQ'
+import { Hero } from './components/sections/Hero'
+import { Portfolio } from './components/sections/Portfolio'
+import { ServiceAreas } from './components/sections/ServiceAreas'
+import { Services } from './components/sections/Services'
+import { Testimonials } from './components/sections/Testimonials'
+import { TrustSignals } from './components/sections/TrustSignals'
+
 function App() {
+  useEffect(() => {
+    const sections = document.querySelectorAll<HTMLElement>('main section[id]')
+
+    if (sections.length === 0) {
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, intersectionObserver) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) {
+            return
+          }
+
+          entry.target.classList.add('is-revealed')
+          intersectionObserver.unobserve(entry.target)
+        })
+      },
+      {
+        threshold: 0.2,
+        rootMargin: '0px 0px -12% 0px',
+      },
+    )
+
+    sections.forEach((section) => observer.observe(section))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="min-h-screen bg-canvas">
-      <div className="flex items-center justify-center py-32">
-        <div className="text-center">
-          <p className="text-sm font-medium tracking-widest uppercase text-ink-400 mb-6">
-            Coming Soon
-          </p>
-          <h1 className="font-display text-5xl font-medium tracking-tight text-ink-900 mb-4">
-            RPB Painting
-          </h1>
-          <p className="text-lg text-ink-500 font-light max-w-md mx-auto">
-            Professional painting services for Brevard County, Florida.
-          </p>
-        </div>
-      </div>
+    <div className="min-h-screen bg-canvas font-body text-ink-900">
+      <a className="skip-link" href="#main-content">
+        Skip to main content
+      </a>
+      <Header />
+
+      <main aria-label="Main content" id="main-content" tabIndex={-1}>
+        <Hero />
+        <Services />
+        <Portfolio />
+        <BeforeAfter />
+        <Testimonials />
+        <About />
+        <ServiceAreas />
+        <TrustSignals />
+        <FAQ />
+        <Contact />
+      </main>
+
+      <Footer />
+      <MobileCallButton />
     </div>
   )
 }
